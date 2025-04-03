@@ -9,3 +9,4 @@ passlib
 python-jose  
 pydantic
 PyJWT
+email-validator
