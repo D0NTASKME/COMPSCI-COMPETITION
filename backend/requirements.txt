@@ -10,3 +10,4 @@ python-jose
 pydantic
 PyJWT
 email-validator
+python-multipart
