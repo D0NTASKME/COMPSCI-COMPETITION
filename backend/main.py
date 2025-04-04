@@ -27,9 +27,15 @@ from backend.routes import levels
 app = FastAPI()
 
 # CORS Middleware to allow frontend access
+origins = [
+    "http://localhost:3000",  # Adjust if your frontend is hosted elsewhere
+    "https://compsci-competition-frontend.vercel.app",  # Replace with your actual Vercel frontend URL!
+    # Add any other origins you need to allow, like your Render frontend URL if you have one
+]
+
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://localhost:3000"],  # Adjust if your frontend is hosted elsewhere
+    allow_origins=origins,
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
