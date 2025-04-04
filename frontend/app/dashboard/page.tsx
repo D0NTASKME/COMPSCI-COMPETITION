@@ -19,7 +19,7 @@ export default function Dashboard() {
         return;
       }
 
-      const res = await fetch("http://127.0.0.1:8000/users/profile", {
+      const res = await fetch("https://compsci-competition-backend.onrender.com/users/profile", {
         headers: { Authorization: `Bearer ${token}` },
       });
 
@@ -32,7 +32,7 @@ export default function Dashboard() {
     };
 
     const fetchLeaderboard = async () => {
-      const res = await fetch("http://127.0.0.1:8000/users/leaderboard");
+      const res = await fetch("https://compsci-competition-backend.onrender.com/users/leaderboard");
       if (res.ok) {
         const data = await res.json();
         setLeaderboard(data);
@@ -42,7 +42,7 @@ export default function Dashboard() {
     };
 
     const fetchLevels = async () => {
-      const res = await fetch("http://127.0.0.1:8000/levels");
+      const res = await fetch("https://compsci-competition-backend.onrender.com/levels");
       if (res.ok) {
         const data = await res.json();
         setLevels(data); // Setting levels from backend

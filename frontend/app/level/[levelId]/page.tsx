@@ -33,19 +33,19 @@ export default function Level() { // Remove params from the function definition
           return;
         }
 
-        const levelRes = await fetch(`http://127.0.0.1:8000/levels/${levelId}`);
+        const levelRes = await fetch(`https://compsci-competition-backend.onrender.com/levels/${levelId}`);
         if (!levelRes.ok) throw new Error("Oops! Failed to get the level info.");
         const levelData = await levelRes.json();
         setLevel(levelData);
 
-        const challengesRes = await fetch(`http://127.0.0.1:8000/levels/${levelId}/challenges`);
+        const challengesRes = await fetch(`https://compsci-competition-backend.onrender.com/levels/${levelId}/challenges`);
         if (!challengesRes.ok) throw new Error("Uh oh! Couldn't load the challenges for this level.");
         const challengesData = await challengesRes.json();
         setChallenges(challengesData);
 
         // Fetch the challenges you've already finished for this level
         const completedRes = await fetch(
-          `http://127.0.0.1:8000/users/completed_challenges?level_id=${levelId}`,
+          `https://compsci-competition-backend.onrender.com/users/completed_challenges?level_id=${levelId}`,
           {
             headers: {
               Authorization: `Bearer ${token}`,

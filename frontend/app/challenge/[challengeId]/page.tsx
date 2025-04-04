@@ -40,7 +40,7 @@ export default function Challenge() {
       setLoading(true);
       setError(null);
       try {
-        const res = await fetch(`http://127.0.0.1:8000/challenges/${challengeId}`);
+        const res = await fetch(`https://compsci-competition-backend.onrender.com/challenges/${challengeId}`);
         if (!res.ok) {
           throw new Error(`Failed to fetch challenge: ${res.status}`);
         }
@@ -59,7 +59,7 @@ export default function Challenge() {
       const token = localStorage.getItem("token");
       if (token && challengeId) {
         try {
-          const res = await fetch(`http://127.0.0.1:8000/challenges/${challengeId}/status`, { // You'll need to create this backend route
+          const res = await fetch(`https://compsci-competition-backend.onrender.com/challenges/${challengeId}/status`, { // You'll need to create this backend route
             headers: {
               Authorization: `Bearer ${token}`,
             },
@@ -110,7 +110,7 @@ export default function Challenge() {
       return;
     }
     try {
-      const res = await fetch(`http://127.0.0.1:8000/challenges/${challenge.id}/submit_flag`, {
+      const res = await fetch(`https://compsci-competition-backend.onrender.com/challenges/${challenge.id}/submit_flag`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -150,7 +150,7 @@ export default function Challenge() {
       return;
     }
     try {
-      const res = await fetch(`http://127.0.0.1:8000/challenges/${challenge.id}/hint`, {
+      const res = await fetch(`https://compsci-competition-backend.onrender.com/challenges/${challenge.id}/hint`, {
         method: "POST",
         headers: {
           "Authorization": `Bearer ${token}`,

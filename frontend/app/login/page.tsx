@@ -13,7 +13,7 @@ export default function Login() {
     formData.append("username", username);
     formData.append("password", password);
 
-    const res = await fetch("http://127.0.0.1:8000/token", {
+    const res = await fetch("https://compsci-competition-backend.onrender.com/token", {
       method: "POST",
       headers: { "Content-Type": "application/x-www-form-urlencoded" },
       body: formData,
