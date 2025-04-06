@@ -9,16 +9,28 @@ export default function Home() {
   const [email, setEmail] = useState("");
   const [userId, setUserId] = useState(null);
 
+  // Check if we are in a local or production environment
+  const backendUrl = window.location.hostname === "localhost" || window.location.hostname === "127.0.0.1"
+    ? "http://127.0.0.1:8000"  // Use local URL for local development
+    : "https://compsci-competition-backend.onrender.com";  // Use production URL for deployed frontend
+
   const registerUser = async () => {
-    const res = await fetch("http://127.0.0.1:8000/register?username=" + username + "&email=" + email, {
-      method: "POST",
-    });
-    const data = await res.json();
-    if (res.ok) {
-      setUserId(data.user_id);
-      toast.success("Registered successfully!");
-    } else {
-      toast.error("Registration failed");
+    try {
+      const res = await fetch(`${backendUrl}/register?username=${username}&email=${email}`, {
+        method: "POST",
+      });
+
+      const data = await res.json();
+
+      if (res.ok) {
+        setUserId(data.user_id);
+        toast.success("Registered successfully!");
+      } else {
+        toast.error("Registration failed");
+      }
+    } catch (error) {
+      console.error("Error during registration:", error);
+      toast.error("Something went wrong!");
     }
   };
 
